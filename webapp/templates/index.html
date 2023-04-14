@@ -17,12 +17,12 @@
         <input type="number" id="first" name="A"/>
           <input type="number" id="second" name="B"/>
     </p>
-    <p>
+    <div>
         <button id="buttonAdd" type="button">Сложить</button>
         <button id="buttonSubtract" type="button">Вычесть</button>
         <button id="buttonMultiply" type="button">Умножить</button>
         <button id="buttonDivide" type="button">Разделить</button>
-    </p>
+    </div>
 </form>
 
 </div>
@@ -32,6 +32,13 @@
 const h1 = document.createElement('h1');  
 h1.className = 'answer'
 $('#container').append(h1)
+
+const makeColor = (elementNumber, elementColor) => {
+    let a = document.getElementsByClassName('answer')
+    return a[elementNumber].style.color = elementColor
+}
+
+
 
 let button = document.getElementById('buttonAdd')
     let getData = function(){
@@ -50,6 +57,7 @@ let button = document.getElementById('buttonAdd')
             for (let value of Object.values(data)) {
                 const b = `<p>${value}`
                 $('.answer').append(`Ответ сложения: ${b}`);
+                makeColor(0, 'green');
             }
         })
     }
@@ -74,6 +82,7 @@ let button2 = document.getElementById('buttonSubtract')
             for (let value of Object.values(data)) {
                 const b = `<p>${value}`
                 $('.answer').append(`Ответ вычетания: ${b}`);
+                makeColor(0, 'green');
             }
         })
     }
@@ -98,6 +107,7 @@ let button3 = document.getElementById('buttonMultiply')
             for (let value of Object.values(data)) {
                 const b = `<p>${value}`
                 $('.answer').append(`Ответ умножения: ${b}`);
+                makeColor(0, 'green');
             }
         })
     }
@@ -122,6 +132,7 @@ let button4 = document.getElementById('buttonDivide')
             for (let value of Object.values(data)) {
                 const b = `<p>${value}`
                 $('.answer').append(`Ответ деления: ${b}`);
+                makeColor(0, 'green');
             }
         })
     }
