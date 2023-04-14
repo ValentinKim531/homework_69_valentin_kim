@@ -61,7 +61,11 @@
             .then((data) => {
                 for (let value of Object.values(data)) {
                     $('.answer').append(`Ответ сложения: ${value}`);
-                    makeColor(0, 'green');
+                    if (value == 'Некорректный набор данных') {
+                        makeColor(0, 'red');
+                    }else{
+                        makeColor(0, 'green');
+                    };
                 }
             })
     }
@@ -91,7 +95,11 @@
             .then((data) => {
                 for (let value of Object.values(data)) {
                     $('.answer').append(`Ответ вычетания: ${value}`);
-                    makeColor(0, 'green');
+                    if (value == 'Некорректный набор данных') {
+                        makeColor(0, 'red');
+                    }else{
+                        makeColor(0, 'green');
+                    };
                 }
             })
     }
@@ -121,7 +129,11 @@
             .then((data) => {
                 for (let value of Object.values(data)) {
                     $('.answer').append(`Ответ умножения: ${value}`);
-                    makeColor(0, 'green');
+                    if (value == 'Некорректный набор данных') {
+                        makeColor(0, 'red');
+                    }else{
+                        makeColor(0, 'green');
+                    };
                 }
             })
     }
@@ -151,7 +163,11 @@
             .then((data) => {
                 for (let value of Object.values(data)) {
                     $('.answer').append(`Ответ деления: ${value}`);
-                    makeColor(0, 'green');
+                    if (value == 'Некорректный набор данных') {
+                        makeColor(0, 'red');
+                    }else{
+                        makeColor(0, 'green');
+                    };
                 }
             })
     }
