@@ -60,8 +60,7 @@
             })
             .then((data) => {
                 for (let value of Object.values(data)) {
-                    const res = `<p>${value}`
-                    $('.answer').append(`Ответ сложения: ${res}`);
+                    $('.answer').append(`Ответ сложения: ${value}`);
                     makeColor(0, 'green');
                 }
             })
@@ -91,8 +90,7 @@
             })
             .then((data) => {
                 for (let value of Object.values(data)) {
-                    const res = `<p>${value}`
-                    $('.answer').append(`Ответ вычетания: ${res}`);
+                    $('.answer').append(`Ответ вычетания: ${value}`);
                     makeColor(0, 'green');
                 }
             })
@@ -122,8 +120,7 @@
             })
             .then((data) => {
                 for (let value of Object.values(data)) {
-                    const res = `<p>${value}`
-                    $('.answer').append(`Ответ умножения: ${res}`);
+                    $('.answer').append(`Ответ умножения: ${value}`);
                     makeColor(0, 'green');
                 }
             })
@@ -153,8 +150,7 @@
             })
             .then((data) => {
                 for (let value of Object.values(data)) {
-                    const res = `<p>${value}`
-                    $('.answer').append(`Ответ деления: ${res}`);
+                    $('.answer').append(`Ответ деления: ${value}`);
                     makeColor(0, 'green');
                 }
             })
