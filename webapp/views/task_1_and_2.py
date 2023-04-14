@@ -1,7 +1,12 @@
 from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 import json
-
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.generic import TemplateView, RedirectView
+from django.views.decorators.csrf import csrf_exempt
+
+
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
 @ensure_csrf_cookie
@@ -11,11 +16,15 @@ def get_token_view(request, *args, **kwargs):
     return HttpResponseNotAllowed(f'Only GET request are allowed {request.method}')
 
 
+@csrf_exempt
 def add(request, *args, **kwargs):
     if request.method == 'POST' and request.body:
+        print(request.body)
         try:
             fields = json.loads(request.body)
-            sum = fields['A'] + fields['B']
+            print(fields)
+            sum = int(fields['A']) + int(fields['B'])
+            print(sum)
             answer_as_json = json.dumps({"answer": sum}, indent=2)
             response = HttpResponse(answer_as_json, content_type='application/json')
         except Exception:
@@ -25,11 +34,12 @@ def add(request, *args, **kwargs):
         return response
 
 
+@csrf_exempt
 def subtract(request, *args, **kwargs):
     if request.method == 'POST' and request.body:
         try:
             fields = json.loads(request.body)
-            sub = fields['A'] - fields['B']
+            sub = int(fields['A']) - int(fields['B'])
             answer_as_json = json.dumps({"answer": sub}, indent=2)
             response = HttpResponse(answer_as_json, content_type='application/json')
         except Exception:
@@ -39,11 +49,12 @@ def subtract(request, *args, **kwargs):
         return response
 
 
+@csrf_exempt
 def multiply(request, *args, **kwargs):
     if request.method == 'POST' and request.body:
         try:
             fields = json.loads(request.body)
-            mult = fields['A'] * fields['B']
+            mult = int(fields['A']) * int(fields['B'])
             answer_as_json = json.dumps({"answer": mult}, indent=2)
             response = HttpResponse(answer_as_json, content_type='application/json')
         except Exception:
@@ -53,12 +64,13 @@ def multiply(request, *args, **kwargs):
         return response
 
 
+@csrf_exempt
 def divide(request, *args, **kwargs):
     if request.method == 'POST' and request.body:
 
         try:
             fields = json.loads(request.body)
-            div = fields['A'] / fields['B']
+            div = int(fields['A']) / int(fields['B'])
             answer_as_json = json.dumps({"answer": div}, indent=2)
             response = HttpResponse(answer_as_json, content_type='application/json')
         except ZeroDivisionError as e:
